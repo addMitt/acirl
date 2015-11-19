@@ -58,7 +58,7 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("/images/clouds.png") repeat-x;
+    background: url("../images/clouds.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
     -webkit-animation: cloud-scroll 120s 0.1s linear infinite;
@@ -74,7 +74,7 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("/images/clouds.png") repeat-x;
+    background: url("../images/clouds.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
     -webkit-animation: cloud-scroll2 120s 0.1s linear infinite;
@@ -90,7 +90,7 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("/images/clouds.png") repeat-x;
+    background: url("../images/clouds.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
     -webkit-animation: cloud-scroll3 120s 0.1s linear infinite;
@@ -296,7 +296,7 @@ body {
     top: 0;
     width: 100%;
     height: 200%;
-    background: url("/images/grass/circle/summer.gif") repeat;
+    background: url("../images/grass/circle/summer.gif") repeat;
 	background-size: 24px 24px;
     -webkit-transform: rotateX(86deg);
     -webkit-transform-origin: 50% 0%;
@@ -457,7 +457,7 @@ body {
     position: absolute;
     width: 133px;
     height: 35px;
-    background-image: url("/images/buttons/button-panel.png");
+    background-image: url("../images/buttons/button-panel.png");
     pointer-events: auto;
 }
 
@@ -486,27 +486,27 @@ body {
 }
 
 .circle-button.ac {
-    background-image: url("/images/buttons/button-ac.png");
+    background-image: url("../images/buttons/button-ac.png");
     left: 2px;
     top: -2px;
 }
 .circle-button.ww {
-    background-image: url("/images/buttons/button-ww.png");
+    background-image: url("../images/buttons/button-ww.png");
     left: 33px;
     top: -2px;
 }
 .circle-button.cf {
-    background-image: url("/images/buttons/button-cf.png");
+    background-image: url("../images/buttons/button-cf.png");
     left: 64px;
     top: -2px;
 }
 .circle-button.nl {
-    background-image: url("/images/buttons/button-nl.png");
+    background-image: url("../images/buttons/button-nl.png");
     left: 95px;
     top: -2px;
 }
 .circle-button.shopping {
-    background-image: url("/images/buttons/button-shopping.png");
+    background-image: url("../images/buttons/button-shopping.png");
     left: 2px;
     top: -2px;
 }
@@ -520,12 +520,12 @@ body {
 }
 
 .playback-button.play {
-    background-image: url("/images/buttons/button-play.png");
+    background-image: url("../images/buttons/button-play.png");
     left: 2px;
     top: -2px;
 }
 .playback-button.pause {
-    background-image: url("/images/buttons/button-pause.png");
+    background-image: url("../images/buttons/button-pause.png");
     left: 64px;
     top: -2px;
 }
@@ -542,7 +542,7 @@ body {
 }
 
 .night .ground {
-    /* background: url("/images/grass/circle/summer-dark.gif") repeat;
+    /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
@@ -560,7 +560,7 @@ body {
 }
 
 .dawn1 .ground {
-    /* background: url("/images/grass/circle/summer-dark.gif") repeat;
+    /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
@@ -578,7 +578,7 @@ body {
 }
 
 .dawn2 .ground {
-    /* background: url("/images/grass/circle/summer-dark.gif") repeat;
+    /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
@@ -596,7 +596,7 @@ body {
 }
 
 .dusk1 .ground {
-    /* background: url("/images/grass/circle/summer-dark.gif") repeat;
+    /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
@@ -614,7 +614,7 @@ body {
 }
 
 .dusk2 .ground {
-    /* background: url("/images/grass/circle/summer-dark.gif") repeat;
+    /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
