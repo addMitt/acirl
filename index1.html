@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <title>AC: IRL</title>
+    
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+     --><!-- 
+    <link rel="stylesheet" href="./css/base.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
+    <link rel="stylesheet" href="./css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
+    <link rel="stylesheet" href="./css/1200_grid.css" type="text/css" media="screen and (min-width: 1200px)">
+     --><!-- 
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <!-- <script src="./js/fastclick.js"></script> -->
+</head>
+<body>
+
+    <script src="https://www.youtube.com/iframe_api"></script><!-- 
+<div class="sky">
+    <div class="clouds-container">
+        <div class="clouds" style="text-align: center; font-size: 72px"> -->
+            <!-- <br><br><br>111111111111111111111111111111111111111111 --><!-- 
+        </div>
+        <div class="clouds2" style="text-align: center; font-size: 72px"> -->
+            <!-- <br><br><br>222222222222222222222222222222222222222222222222222 --><!-- 
+        </div>
+        <div class="clouds3" style="text-align: center; font-size: 72px"> -->
+            <!-- <br><br><br>333333333333333333333333333333333333333333333 --><!-- 
+        </div>
+    </div>
+</div>
+<div class="ground-container">
+    <div class="ground">
+    </div>
+    <div class="ground-horizon">
+    </div>
+    <div class="sky-horizon">
+    </div>
+    <div class="trees">
+        <div class="row1">
+            <div class="left">
+                <div class="tree" style="right: 600px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tree" style="left: 500px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="left">
+                <div class="tree" style="right: 140px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tree" style="left: 10px">
+                    <img src="/images/tree.png">
+                </div>
+                <div class="tree" style="left: 800px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="left">
+                <div class="tree" style="right: 320px">
+                    <img src="/images/tree.png">
+                </div>
+                <div class="tree" style="right: 800px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tree" style="left: 200px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+        </div>
+        <div class="row4">
+            <div class="left">
+                <div class="tree" style="right: -100px">
+                    <img src="/images/tree.png">
+                </div>
+                <div class="tree" style="right: 480px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tree" style="left: 350px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+        </div>
+        <div class="row5">
+            <div class="left">
+                <div class="tree" style="right: 700px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tree" style="left: 700px">
+                    <img src="/images/tree.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="video-screen-container">
+        <div class="video-buttons">
+            <div class="video-buttons-panel left">
+                <div class="game-button ac on" data-game="0">
+                </div>
+                <div class="game-button ww on" data-game="1">
+                </div>
+                <div class="game-button cf on" data-game="2">
+                </div>
+                <div class="game-button nl on" data-game="3">
+                </div>
+            </div> -->
+            <!--<div class="video-buttons-panel right">
+                <div class="playback-button play">
+                </div>
+                <div class="playback-button pause on">
+                </div>
+            </div>--><!-- 
+        </div>
+        <img class="video-screen" src="/images/video-screen.png">
+        <div class="video-iframe"> -->
+            <div id="player"></div>
+        <!-- </div>
+        <img class="video-static" src="/images/static.gif">
+    </div> -->
+</div>
+<script type="text/javascript">
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+    
+    player = new YT.Player('player', {
+        width: 320,
+        height: 180,
+        videoId: "odZ-OV8JWNk",
+        fs: 0
+    });
+    
+}
+/*
+    $(function() {
+        FastClick.attach(document.body);
+    });*/
+    
+    var videoIds = [
+        ["odZ-OV8JWNk","hyIPaz3UJAI","fyMM5ZMIMH8","_4G7EWJ7Ik8"], //0   12AM
+        ["zriYPJvR45s","kFSTf-q9qX4","qDUevjay8Rc","ogZOuyEUaqM"], //1   1AM
+        ["J36o0MZ7EzU","_ITM1vFiV6U","5Pd5K-TQ1gY","6ctYQ2giDfw"], //2   2AM
+        ["zXcpYHhiQZk","gWH27B8TPDA","XGgT_6tYYGg","rjoi8HzYjnY"], //3   3AM
+        ["of877S78m5k","84V2PZa1F-c","Tf5TX0TSGps","alCXAH7tzT4"], //4   4AM
+        ["SY69KnqL8DE","K5W5WLKdnlg","h2XCGASo6r4","YsRHAojQK20"], //5   5AM
+        ["gSO3-wVsrOU","QTZ3-oLu7cw","Fqptn0peqLE","tnlpjqXHQnI"], //6   6AM
+        ["WA-iIVYYqsI","d3d7DdKBSrM","exK1ee3RR48","DHskPDrg-fQ"], //7   7AM
+        ["fYSMZpiF7sA","_Z_Eg5DgTe4","8gJomk45kFw","r7Ncy-yY9Uw"], //8   8AM
+        ["JDQu0rr7gEo","cdB3harSmZ8","ikjVV_ZcVwE","qRAt72y7Dl0"], //9   9AM
+        ["GAHD10BeSqM","-K1jZ0Oek18","bc-YhiwcA_E","BtxRvNYYUUo"], //10  10AM
+        ["ONKmAo8KsGk","nvKUou7Ty0c","4tcZAm84h_w","1ZXwbqjoHQ8"], //11  11AM
+        ["6QgNRFuRQUs","SRt7ISfi7OQ","uDmjN8kgqmE","kginZ7__1aE"], //12  12PM
+        ["bskJpsmSzQo","QH8ICY7-qvg","IT7vypPRA-Y","JkHgU_O6f64"], //13  1PM
+        ["dIWlztcYiJg","u-bmQy-xi_I","t3fjGXA2dWo","yQicvIsa8W8"], //14  2PM
+        ["6bWilabrMFw","Jr0nWQkyZb0","-GgytCQr5o4","WalIFXKCmHU"], //15  3PM
+        ["Dlx9Kqg7u4Y","5nqWwV2kn7Y","catR8Ul2n_k","N5Xx8r2uTLI"], //16  4PM
+        ["tF5sm6TBXhg","ZTvNX1R5QlU","3SaT4Yp0FaA","37UjXU-3wZ8"], //17  5PM
+        ["37F1qzbtDnA","SOKGTIw2fCk","x1zDj6AgWjI","5QJaWg5fOAo"], //18  6PM
+        ["q5FFPzAX-Jg","BD3lqQ9-8Ig","ugHzq90-h08","qYhA2QqFDS8"], //19  7PM
+        ["eZ8lmEQO8ks","0jWetqSVGNc","UJG3UdgKOwE","Fksz_uENt9U"], //20  8PM
+        ["w_md7sA7syU","oWmT9EGNuOU","HIaSN8OHfV8","ZUPm4MT64VU"], //21  9PM
+        ["cRCuIlnGpBY","vvw5eCl8okI","LEhlv7okIoA","YukcuUPS05U"], //22  10PM
+        ["YrEss6dcsc8","2ntrw94Pbe0","vzcH0HFWWiE","xbjbGNa-7eE"]  //23  11PM
+    ]
+    
+    var currentGames = [];
+    
+    /*
+    function updatePlayer() {
+    
+        currentGames = [];
+        
+        $(".game-button.on").each(function() {
+            currentGames.push(parseInt($(this).attr("data-game")));
+            
+        }).promise().done( function(){
+            
+            if (currentGames.length == 0) {
+                $("#player").hide();
+            }
+            else {
+                $("#player").show();
+                
+                var currentPlaylist = [];
+            
+                var currentHour = new Date();
+                currentHour = currentHour.getHours();
+            
+                for(var i=0; i<currentGames.length; i++) {
+                    currentPlaylist.push(videoIds[currentHour][currentGames[i]]);
+                }
+                
+                player.loadPlaylist({
+                    playlist:currentPlaylist,
+                    fs: 0
+                });
+            }
+        });
+    }*/
+    
+   /* function onYouTubeIframeAPIReady() {
+        
+        player = new YT.Player('player', {
+            width: 320,
+            height: 180,
+            videoId: "odZ-OV8JWNk",
+            /*autohide: 1,
+            fs: 0/*,
+            iv_load_policy: 3,
+            loop: 1,
+            rel: 0,
+            color: "white",
+            wmode: "transparent"/*,
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+        
+    }*/
+    /*
+    function onPlayerReady() {
+        updatePlayer();
+        
+        $("body").on("click", ".game-button", function () {
+            $(this).toggleClass("on");
+            updatePlayer();
+        });
+    }*/
+    
+</script>
+</body>
+
+</html>
