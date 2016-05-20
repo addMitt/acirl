@@ -445,13 +445,17 @@ function updatePlayer() {
             //get current player state so I can pause it again after loading, if necessary
             var currentState = player.getPlayerState();
             
-            player.loadPlaylist({
-                playlist:currentPlaylist
-            });
-            player.setLoop(true);
-            if (currentState == -1 || currentState == 2 || currentState == 5) {
-                player.pauseVideo();
+            if (currentState == 5 || currentState == 2) {
+                player.cuePlaylist({
+                    playlist:currentPlaylist
+                });
             }
+            else {
+                player.loadPlaylist({
+                    playlist:currentPlaylist
+                });
+            }
+            player.setLoop(true);
         }
         
         var nextHourTime = new Date();
@@ -460,7 +464,7 @@ function updatePlayer() {
         nextHourTime.setSeconds(0);
         nextHourTime = nextHourTime - Date.now();
         
-        hourRefresh = setTimeout(function(){updatePlayer();}, nextHourTime);
+        hourRefresh = setTimeout(function() { updatePlayer(); }, nextHourTime);
         
     });
 }
