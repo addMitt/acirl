@@ -118,7 +118,7 @@ else if(currentTime >= (sundown - 600000)) {
 
 
 function getWeatherLatLong(latitude, longitude) {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
     $.ajax({
         type: "POST",
         dataType: "jsonp",
@@ -131,7 +131,7 @@ function getWeatherLatLong(latitude, longitude) {
 }
 
 function getWeatherPostal(postal) {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + postal + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?zip=' + postal + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
     $.ajax({
         type: "POST",
         dataType: "jsonp",
@@ -162,7 +162,7 @@ $('.postal-input button').on('click',function() {
 
 var tag = document.createElement('script');
 
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = "httpss://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
