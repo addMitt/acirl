@@ -342,11 +342,18 @@ body {
     transform-origin: 50% 100%;
     position: absolute;
     bottom: 0;
+    width: 310px;
+    text-align: center;
+}
+
+.tree img {
+    max-height: 380px;
+    max-width: 100%;
 }
 
 .row1 {
     position: absolute;
-    bottom: 20%;
+    bottom: 15%;
     width: 100%;
     z-index: 350;
 }
@@ -356,22 +363,22 @@ body {
 
 .row2 {
     position: absolute;
-    bottom: 58%;
+    bottom: 50%;
     width: 100%;
     z-index: 340;
 }
 .row2 .tree {
-    transform: scale(1);
+    transform: scale(1.16);
 }
 
 .row3 {
     position: absolute;
-    bottom: 72%;
+    bottom: 70%;
     width: 100%;
     z-index: 330;
 }
 .row3 .tree {
-    transform: scale(0.65);
+    transform: scale(0.77);
 }
 
 .row4 {
@@ -381,7 +388,7 @@ body {
     z-index: 320;
 }
 .row4 .tree {
-    transform: scale(0.4);
+    transform: scale(0.48);
 }
 
 .row5 {
@@ -391,7 +398,7 @@ body {
     z-index: 310;
 }
 .row5 .tree {
-    transform: scale(0.18);
+    transform: scale(0.28);
     opacity: 0.8;
 }
 
