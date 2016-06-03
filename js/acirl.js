@@ -319,8 +319,9 @@ var shopIds = [
         "MQnCH0xWbfo", //island (hide and seek)
     ]
 ];
-
-function shuffle(array) { //Fisher–Yates Shuffle shamelessly taken from bost.ocks.org/mike/shuffle
+console.log(Math.random());
+console.log(Math.floor(Math.random() * (10 - 1 + 1) + 1));
+function shuffle(array) { //Fisher–Yates Shuffle shamefully taken from bost.ocks.org/mike/shuffle
     var m = array.length, t, i;
     
     // While there remain elements to shuffle…
