@@ -311,7 +311,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-/*  background: linear-gradient(to bottom, rgba(57,163,239,1) 0%, rgba(57,163,239,0.2) 2%, rgba(57,163,239,0.1) 10%, rgba(57,163,239,0) 45%);*/
+    box-shadow: inset 0px 5px 6px rgb(57,163,239),inset 0px 10px 30px rgb(57,163,239);
 }
 
 .sky-horizon {
@@ -321,19 +321,18 @@ body {
     top: 0px;
     width: 300%;
     height: 200%;
-    /* background: linear-gradient(to top, rgba(57,163,239,1) 0%, rgba(57,163,239,0) 33%); */
     box-shadow: 0 0 10em 100px rgba(57,163,239,1);
 }
-.transition .sky-horizon {
+.transition .sky-horizon, .transition .ground-horizon {
     transition: box-shadow 600s;
 }
 
-.trees .left {
+.trees>div>.left {
     position: absolute;
     right: 50%;
 }
 
-.trees .right {
+.trees>div>.right {
     position: absolute;
     left: 50%;
 }
@@ -346,9 +345,41 @@ body {
     text-align: center;
 }
 
-.tree img {
+.tree .tree-img {
     max-height: 380px;
     max-width: 100%;
+}
+
+.fruit {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: url("../images/fruits/apple.png");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    -webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
+}
+
+.fruit.left {
+    left: 48px;
+    top: 112px;
+}
+
+.fruit.right {
+    right: 48px;
+    top: 112px;
+}
+
+.fruit.top {
+    left: 119px;
+    top: 19px;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
 }
 
 .row1 {
@@ -358,7 +389,7 @@ body {
     z-index: 350;
 }
 .row1 .tree {
-    transform: scale(1.8);
+    transform: scale(1.9);
 }
 
 .row2 {
@@ -368,7 +399,7 @@ body {
     z-index: 340;
 }
 .row2 .tree {
-    transform: scale(1.16);
+    transform: scale(1.26);
 }
 
 .row3 {
@@ -376,9 +407,11 @@ body {
     bottom: 70%;
     width: 100%;
     z-index: 330;
+    -webkit-filter: blur(0.75px);
+    filter: blur(0.75px);
 }
 .row3 .tree {
-    transform: scale(0.77);
+    transform: scale(0.87);
 }
 
 .row4 {
@@ -386,9 +419,11 @@ body {
     bottom: 85%;
     width: 100%;
     z-index: 320;
+    -webkit-filter: blur(1.5px);
+    filter: blur(1.5px);
 }
 .row4 .tree {
-    transform: scale(0.48);
+    transform: scale(0.58);
 }
 
 .row5 {
@@ -396,9 +431,11 @@ body {
     bottom: 93.5%;
     width: 100%;
     z-index: 310;
+    -webkit-filter: blur(1.5px);
+    filter: blur(1.5px);
 }
 .row5 .tree {
-    transform: scale(0.28);
+    transform: scale(0.38);
     opacity: 0.8;
 }
 
@@ -557,6 +594,10 @@ body {
     box-shadow: 0 0 10em 100px rgb(13, 51, 101);
 }
 
+.night .ground-horizon {
+    box-shadow: inset 0px 5px 6px rgb(13, 51, 101),inset 0px 10px 30px rgb(13, 51, 101);
+}
+
 
 .dawn1 .tint {
     background: rgba(0, 63, 210, 0.15);
@@ -573,6 +614,10 @@ body {
 
 .dawn1 .sky-horizon {
     box-shadow: 0 0 10em 100px rgb(0, 96, 222);
+}
+
+.dawn1 .ground-horizon {
+    box-shadow: inset 0px 5px 6px rgb(0, 96, 222),inset 0px 10px 30px rgb(0, 96, 222);
 }
 
 
@@ -593,6 +638,10 @@ body {
     box-shadow: 0 0 14em 100px rgba(232,162,0,0.7);
 }
 
+.dawn2 .ground-horizon {
+    box-shadow: inset 0px 5px 6px rgba(232,162,0,0.7),inset 0px 10px 30px rgba(232,162,0,0.7);
+}
+
 
 .dusk1 .tint {
     background: rgba(179, 51, 0, 0.1);
@@ -611,6 +660,10 @@ body {
     box-shadow: 0 0 14em 100px rgba(232, 119, 0, 0.7);
 }
 
+.dusk1 .ground-horizon {
+    box-shadow: inset 0px 5px 6px rgba(232, 119, 0, 0.7),inset 0px 10px 30px rgba(232, 119, 0, 0.7);
+}
+
 
 .dusk2 .tint {
     background: rgba(136, 51, 32, 0.2);
@@ -627,6 +680,10 @@ body {
 
 .dusk2 .sky-horizon {
     box-shadow: 0 0 14em 100px rgba(255, 111, 41, 0.7);
+}
+
+.dusk1 .ground-horizon {
+    box-shadow: inset 0px 5px 6px rgba(255, 111, 41, 0.7),inset 0px 10px 30px rgba(255, 111, 41, 0.7);
 }
 
 
