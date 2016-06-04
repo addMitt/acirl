@@ -71,43 +71,43 @@ function ItsMidnight() {
 //600000 = 10 minutes
 
 //the initial time-of-day set
-if(currentTime < (sunrise - 7200000 - 600000)) {
+if (currentTime < (sunrise - 7200000 - 600000)) {
     //night (morning)
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("night");
     
     setTimeout(NightToDawn1, (sunrise - 7200000 - 600000) - currentTime);
 }
-else if(currentTime >= (sunrise - 7200000 - 600000) && currentTime < (sunrise - 3600000 - 600000)) {
+else if (currentTime >= (sunrise - 7200000 - 600000) && currentTime < (sunrise - 3600000 - 600000)) {
     //dawn1
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("dawn1");
     
     setTimeout(Dawn1ToDawn2, (sunrise - 3600000 - 600000) - currentTime);
 }
-else if(currentTime >= (sunrise - 3600000 - 600000) && currentTime < (sunrise - 600000)) {
+else if (currentTime >= (sunrise - 3600000 - 600000) && currentTime < (sunrise - 600000)) {
     //dawn2
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("dawn2");
     
     setTimeout(Dawn2ToDay, (sunrise - 600000) - currentTime);
 }
-else if(currentTime >= (sunrise - 600000)  && currentTime < (sundown - 7200000 - 600000)) {
+else if (currentTime >= (sunrise - 600000)  && currentTime < (sundown - 7200000 - 600000)) {
     //day time
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("day");
     
     setTimeout(DayToDusk1, (sundown - 7200000 - 600000) - currentTime);
 }
-else if(currentTime >= (sundown - 7200000 - 600000) && currentTime < (sundown - 3600000 - 600000)) {
+else if (currentTime >= (sundown - 7200000 - 600000) && currentTime < (sundown - 3600000 - 600000)) {
     //dusk1
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("dusk1");
     
     setTimeout(Dusk1ToDusk2, (sundown - 3600000 - 600000) - currentTime);
 }
-else if(currentTime >= (sundown - 3600000 - 600000) && currentTime < (sundown - 600000)) {
+else if (currentTime >= (sundown - 3600000 - 600000) && currentTime < (sundown - 600000)) {
     //dusk2
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("dusk2");
     
     setTimeout(Dusk2ToNight, (sundown - 600000) - currentTime);
 }
-else if(currentTime >= (sundown - 600000)) {
+else if (currentTime >= (sundown - 600000)) {
     //night
     $("body").removeClass("day dusk1 dusk2 night dawn1 dawn2").addClass("night");
     
@@ -115,9 +115,9 @@ else if(currentTime >= (sundown - 600000)) {
 }
 
 
+//weather stuff, needs to be changed to a new API with HTTPS
 
-
-function getWeatherLatLong(latitude, longitude) {
+/*function getWeatherLatLong(latitude, longitude) {
     var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
     $.ajax({
         type: "POST",
@@ -152,14 +152,55 @@ if ("geolocation" in navigator) {
     });
 }
 else {
-  /* geolocation IS NOT available */
+   geolocation IS NOT available 
   $('.postal-input').addClass('show');
 }
 
 $('.postal-input button').on('click',function() {
     getWeatherPostal($('.postal-input input').val());
+});*/
+
+
+
+//get the fruits and grass
+
+var fruits = ["apple","orange","pear","cherries","peach"];
+var grass = ["square","triangle","circle"];
+
+if (sessionStorage.getItem("fruit") == null || sessionStorage.getItem("grass") == null) {
+    //clear em both
+    sessionStorage.removeItem("fruit");
+    sessionStorage.removeItem("grass");
+    
+    //set the fruit to a random number         max min      min
+    var newFruit = (Math.floor(Math.random() * (4 - 0 + 1) + 0));
+    //set the grass to a random number         max min      min
+    var newGrass = (Math.floor(Math.random() * (2 - 0 + 1) + 0));
+    
+    //save it
+    sessionStorage.setItem("fruit", newFruit);
+    sessionStorage.setItem("grass", newGrass);
+    
+    //show them
+    $('.fruit').addClass(fruits[newFruit]);
+    //something for showing grass here
+    
+}
+else {
+    //set their fruit to the stored variable
+    var currentFruit = sessionStorage.getItem("fruit");
+    //show them
+    $('.fruit').addClass(fruits[currentFruit]);
+}
+var debugCounter = 0;
+$('body').on('click','.debug-button', function() {
+    $('.fruit').removeClass("apple orange pear cherries peach");
+    $('.fruit').addClass(fruits[debugCounter]);
+    debugCounter++;
+    if (debugCounter > 4) {debugCounter = 0;}
 });
 
+//some YouTube initialization stuff
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -319,8 +360,7 @@ var shopIds = [
         "MQnCH0xWbfo", //island (hide and seek)
     ]
 ];
-console.log(Math.random());
-console.log(Math.floor(Math.random() * (10 - 1 + 1) + 1));
+
 function shuffle(array) { //Fisher–Yates Shuffle shamefully taken from bost.ocks.org/mike/shuffle
     var m = array.length, t, i;
     
@@ -398,9 +438,9 @@ function updatePlayer() {
             var currentHour = new Date();
             currentHour = currentHour.getHours();
             
-            if(shoppingState == true) {
+            if (shoppingState == true) {
                 //make an array of all the shopping IDs for the selected games
-                if(currentGames.length == 1) {
+                if (currentGames.length == 1) {
                     var shopPlaylist = shuffle(shopIds[currentGames[0]]);
                 }
                 else {
@@ -433,7 +473,7 @@ function updatePlayer() {
             }
             else {
                 //just make a short playlist out of the selected games
-                if(currentGames.length == 1) {
+                if (currentGames.length == 1) {
                     currentPlaylist.push(extendedVideoIds[currentHour][currentGames[0]]);
                 }
                 else {
