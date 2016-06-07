@@ -283,33 +283,50 @@ body {
     width: 100%;
     height: 65%;
     z-index: 100;
-    -webkit-perspective: 700px;
-    -webkit-perspective-origin: 50% 0%;
-    perspective: 700px;
-    perspective-origin: 50% 0%;
 }
 
-.ground {
+.floor-perspective {
+    position: absolute;
     z-index: 101;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+    overflow: hidden;
+}
+
+.floor-container {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    -webkit-transform: rotateX(66deg) translateZ(444px);
+    -webkit-transform-origin: 50% 100%;
+    transform: rotateX(66deg) translateZ(444px);
+    transform-origin: 50% 100%;
+}
+
+.floor {
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
     width: 100%;
-    height: 200%;
-    background: url("../images/grass/circle/summer.gif") repeat;
-	background-size: 24px 24px;
-    -webkit-transform: rotateX(86deg);
-    -webkit-transform-origin: 50% 0%;
-    transform: rotateX(86deg);
-    transform-origin: 50% 0%;
+    height: 300%;
+    background: url("../images/grass/circles.png") repeat;
+    background-size: 1000px 1000px;
+    -webkit-transform: translateY(800px);
+    transform: translateY(800px);
 }
 
 .ground-horizon {
     z-index: 200;
     position: absolute;
-    left: 0;
+    left: -10%;
     top: 0;
-    width: 100%;
+    width: 120%;
     height: 100%;
     box-shadow: inset 0px 5px 6px rgb(57,163,239),inset 0px 10px 30px rgb(57,163,239);
 }
@@ -354,13 +371,50 @@ body {
     display: inline-block;
     width: 70px;
     height: 70px;
+    position: absolute;
+    -webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
+}
+
+.fruit.apple {
     background: url("../images/fruits/apple.png");
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    position: absolute;
-    -webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
-    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.25));
+}
+
+.fruit.orange {
+    background: url("../images/fruits/orange.png");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    -webkit-transform: scale(0.93) translateY(1px);
+    transform: scale(0.93) translateY(1px);
+}
+
+.fruit.pear {
+    background: url("../images/fruits/pear.png");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.fruit.cherries {
+    background: url("../images/fruits/cherries.png");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    -webkit-transform: scale(0.95) translateX(-1px);
+    transform: scale(0.95) translateX(-1px);
+}
+
+.fruit.peach {
+    background: url("../images/fruits/peach.png");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    -webkit-transform: scale(0.95) translate(-2px,2px);
+    transform: scale(0.95) translate(-2px,2px);
 }
 
 .fruit.left {
@@ -374,12 +428,12 @@ body {
 }
 
 .fruit.top {
-    left: 119px;
-    top: 19px;
+    width: 63px;
+    height: 63px;
+    left: 123px;
+    top: 22px;
     -webkit-transform-origin: center;
     transform-origin: center;
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9);
 }
 
 .row1 {
@@ -585,7 +639,7 @@ body {
     background: rgb(34, 53, 105);
 }
 
-.night .ground {
+.night .floor {
     /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
@@ -607,7 +661,7 @@ body {
     background: rgb(10, 52, 167);
 }
 
-.dawn1 .ground {
+.dawn1 .floor {
     /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
@@ -629,17 +683,17 @@ body {
     background: rgb(112, 173, 236);
 }
 
-.dawn2 .ground {
+.dawn2 .floor {
     /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
 .dawn2 .sky-horizon {
-    box-shadow: 0 0 14em 100px rgba(232,162,0,0.7);
+    box-shadow: 0px 0px 5px 6px #C2A54C, 0 0 14em 100px rgba(232,162,0,0.7);
 }
 
 .dawn2 .ground-horizon {
-    box-shadow: inset 0px 5px 6px rgba(232,162,0,0.7),inset 0px 10px 30px rgba(232,162,0,0.7);
+    box-shadow: inset 0px 5px 6px #C2A54C,inset 0px 10px 30px #C2A54C;
 }
 
 
@@ -651,17 +705,17 @@ body {
     background: rgb(69, 153, 243);
 }
 
-.dusk1 .ground {
+.dusk1 .floor {
     /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
 .dusk1 .sky-horizon {
-    box-shadow: 0 0 14em 100px rgba(232, 119, 0, 0.7);
+    box-shadow: 0px 0px 5px 6px #B68154, 0 0 14em 100px rgba(232, 119, 0, 0.7);
 }
 
 .dusk1 .ground-horizon {
-    box-shadow: inset 0px 5px 6px rgba(232, 119, 0, 0.7),inset 0px 10px 30px rgba(232, 119, 0, 0.7);
+    box-shadow: inset 0px 5px 6px #B68154,inset 0px 10px 30px #B68154;
 }
 
 
@@ -673,17 +727,17 @@ body {
     background: rgb(102, 125, 243);
 }
 
-.dusk2 .ground {
+.dusk2 .floor {
     /* background: url("../images/grass/circle/summer-dark.gif") repeat;
     background-size: 24px 24px; */
 }
 
 .dusk2 .sky-horizon {
-    box-shadow: 0 0 14em 100px rgba(255, 111, 41, 0.7);
+    box-shadow: 0px 0px 5px 6px #C4776E, 0 0 14em 100px rgba(255, 111, 41, 0.7);
 }
 
-.dusk1 .ground-horizon {
-    box-shadow: inset 0px 5px 6px rgba(255, 111, 41, 0.7),inset 0px 10px 30px rgba(255, 111, 41, 0.7);
+.dusk2 .ground-horizon {
+    box-shadow: inset 0px 5px 6px #C2736B,inset 0px 10px 30px #C2736B;
 }
 
 
