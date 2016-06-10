@@ -16,21 +16,21 @@ body {
     display: none;
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1921px) {
     body {
         left: 50%;
         margin-left: -966px;
     }
 }
 
-@media screen and (min-height: 1080px) {
+@media screen and (min-height: 1081px) {
     body {
         top: 50%;
         margin-top: -546px;
     }
 }
 
-@media screen and (min-width: 1920px), screen and (min-height: 1080px) {
+@media screen and (min-width: 1921px), screen and (min-height: 1081px) {
     body {
         max-width: 1920px;
         max-height: 1080px;
@@ -65,7 +65,6 @@ body {
         top: 200px;
         width: 140px;
         height: 140px;
-        /*background-color: #555555;*/
     }
     
     .speakers .left {
@@ -618,7 +617,6 @@ body {
 }
 .row5 .tree {
     transform: scale(0.38);
-    opacity: 0.8;
 }
 
 .video-screen-container {
