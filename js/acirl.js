@@ -53,6 +53,9 @@ function ItsMidnight() {
     //new currentTime
     currentTime = new Date();
     
+    //make sure we change season if you're looking at this at midnight
+    setSeason(currentTime);
+    
     //new (temporary) sunrise
     sunrise = new Date();
     sunrise.setHours(7);
@@ -65,6 +68,10 @@ function ItsMidnight() {
     
     setTimeout(NightToDawn1, (sunrise - 7200000 - 600000) - currentTime);
 }
+
+//set the season real quick
+
+setSeason(currentTime);
 
 //7200000 = 2 hours
 //3600000 = 1 hour
@@ -192,12 +199,58 @@ else {
     //show them
     $('.fruit').addClass(fruits[currentFruit]);
 }
-var debugCounter = 0;
-$('body').on('click','.debug-button', function() {
+
+var debugFruitsCounter = 0;
+$('body').on('click','.debug-fruits-button', function() {
     $('.fruit').removeClass("apple orange pear cherries peach");
-    $('.fruit').addClass(fruits[debugCounter]);
-    debugCounter++;
-    if (debugCounter > 4) {debugCounter = 0;}
+    $('.fruit').addClass(fruits[debugFruitsCounter]);
+    debugFruitsCounter++;
+    if (debugFruitsCounter > 4) {debugFruitsCounter = 0;}
+});
+
+
+//season stuff
+
+function setSeason(time) {
+    //clean it up
+    $('body').removeClass('spring summer autumn winter1 winter2');
+    //when I have weather, check if weather is not snow
+    $('body').removeClass('snow');
+    
+    var month = time.getMonth();
+    var day = time.getDate();
+    console.log(month);
+    console.log(day);
+    
+    if ((month >= 1) && (month < 2 && day < 15)) {
+        $('body').addClass('winter2 snow');
+    }
+    else if ((month >= 2 && day >= 15) && (month < 5)) {
+        $('body').addClass('spring');
+    }
+    else if ((month >= 5) && (month < 8)) {
+        $('body').addClass('summer');
+    }
+    else if ((month >= 8) && (month <= 10 && day < 15)) {
+        $('body').addClass('autumn');
+    }
+    else if ((month >= 10 && day >= 15) || (month <= 1)) {
+        $('body').addClass('winter1 snow');
+    }
+    
+}
+
+var seasons = ["spring","summer","autumn","winter1","winter2"];
+
+var debugSeasonsCounter = 0;
+$('body').on('click','.debug-seasons-button', function() {
+    $('body').removeClass('spring summer autumn winter1 winter2 snow');
+    $('body').addClass(seasons[debugSeasonsCounter]);
+    if (debugSeasonsCounter == 3 || debugSeasonsCounter == 4) {
+        $('body').addClass('snow');
+    }
+    debugSeasonsCounter++;
+    if (debugSeasonsCounter > 4) {debugSeasonsCounter = 0;}
 });
 
 //some YouTube initialization stuff
