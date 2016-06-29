@@ -219,8 +219,6 @@ function setSeason(time) {
     
     var month = time.getMonth();
     var day = time.getDate();
-    console.log(month);
-    console.log(day);
     
     if ((month >= 1) && (month < 2 && day < 15)) {
         $('body').addClass('winter2 snow');
