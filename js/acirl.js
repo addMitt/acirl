@@ -172,7 +172,7 @@ $('.postal-input button').on('click',function() {
 //get the fruits and grass
 
 var fruits = ["apple","orange","pear","cherries","peach"];
-var grass = ["square","triangle","circle"];
+var grass = ["squares","triangles","circles"];
 
 if (sessionStorage.getItem("fruit") == null || sessionStorage.getItem("grass") == null) {
     //clear em both
@@ -190,14 +190,17 @@ if (sessionStorage.getItem("fruit") == null || sessionStorage.getItem("grass") =
     
     //show them
     $('.fruit').addClass(fruits[newFruit]);
-    //something for showing grass here
     
+    //something for showing grass here
+    $('body').addClass(grass[newGrass]);
 }
 else {
-    //set their fruit to the stored variable
+    //set the stored variables to the stored variable
     var currentFruit = sessionStorage.getItem("fruit");
+    var currentGrass = sessionStorage.getItem("grass");
     //show them
     $('.fruit').addClass(fruits[currentFruit]);
+    $('body').addClass(grass[currentGrass]);
 }
 
 var debugFruitsCounter = 0;
@@ -206,6 +209,14 @@ $('body').on('click','.debug-fruits-button', function() {
     $('.fruit').addClass(fruits[debugFruitsCounter]);
     debugFruitsCounter++;
     if (debugFruitsCounter > 4) {debugFruitsCounter = 0;}
+});
+
+var debugGrassCounter = 0;
+$('body').on('click','.debug-grass-button', function() {
+    $('body').removeClass("circles squares triangles");
+    $('body').addClass(grass[debugGrassCounter]);
+    debugGrassCounter++;
+    if (debugGrassCounter > 2) {debugGrassCounter = 0;}
 });
 
 

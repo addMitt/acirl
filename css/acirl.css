@@ -908,8 +908,14 @@ body {
 
 
 
-.spring .floor {
+.spring.circles .floor {
     background-image: url("../images/grass/circles/spring.jpg");
+}
+.spring.squares .floor {
+    background-image: url("../images/grass/squares/spring.jpg");
+}
+.spring.triangles .floor {
+    background-image: url("../images/grass/triangles/spring.jpg");
 }
 
 .spring .tree .tree-img {
@@ -925,8 +931,14 @@ body {
 }
 
 
-.summer .floor {
+.summer.circles .floor {
     background-image: url("../images/grass/circles/summer.jpg");
+}
+.summer.squares .floor {
+    background-image: url("../images/grass/squares/summer.jpg");
+}
+.summer.triangles .floor {
+    background-image: url("../images/grass/triangles/summer.jpg");
 }
 
 .summer .tree .tree-img {
@@ -942,8 +954,14 @@ body {
 }
 
 
-.autumn .floor {
+.autumn.circles .floor {
     background-image: url("../images/grass/circles/autumn.jpg");
+}
+.autumn.squares .floor {
+    background-image: url("../images/grass/squares/autumn.jpg");
+}
+.autumn.triangles .floor {
+    background-image: url("../images/grass/triangles/autumn.jpg");
 }
 
 .autumn .tree .tree-img {
@@ -959,8 +977,14 @@ body {
 }
 
 
-.winter1 .floor {
+.winter1.circles .floor {
     background-image: url("../images/grass/circles/autumn.jpg");
+}
+.winter1.squares .floor {
+    background-image: url("../images/grass/squares/autumn.jpg");
+}
+.winter1.triangles .floor {
+    background-image: url("../images/grass/triangles/autumn.jpg");
 }
 
 .winter1 .tree .tree-img {
@@ -976,8 +1000,14 @@ body {
 }
 
 
-.winter2 .floor {
+.winter2.circles .floor {
     background-image: url("../images/grass/circles/spring.jpg");
+}
+.winter2.squares .floor {
+    background-image: url("../images/grass/squares/spring.jpg");
+}
+.winter2.triangles .floor {
+    background-image: url("../images/grass/triangles/spring.jpg");
 }
 
 .winter2 .tree .tree-img {
@@ -993,8 +1023,14 @@ body {
 }
 
 
-.snow.winter1 .floor, .snow.winter2 .floor {
+.snow.winter1.circles .floor, .snow.winter2.circles .floor {
     background-image: url("../images/grass/circles/snow.jpg");
+}
+.snow.winter1.squares .floor, .snow.winter2.squares .floor {
+    background-image: url("../images/grass/squares/snow.jpg");
+}
+.snow.winter1.triangles .floor, .snow.winter2.triangles .floor {
+    background-image: url("../images/grass/triangles/snow.jpg");
 }
 
 .snow.winter1 .video-ground, .snow.winter2 .video-ground {
