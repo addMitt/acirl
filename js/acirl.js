@@ -124,15 +124,123 @@ else if (currentTime >= (sundown - 600000)) {
 
 //weather stuff
 
-function getWeatherLatLong(latitude, longitude) {
+var weatherConditions = {
+    "clearSkies": [
+        "Fair","Clear","Fair with Haze","Clear with Haze","Fair and Breezy","Clear and Breezy","Windy","Breezy",
+        "Fair and Windy","Hot"
+    ],
+    "partlyCloudy": [
+        "A Few Clouds","A Few Clouds with Haze","A Few Clouds and Breezy","Partly Cloudy",
+        "Partly Cloudy with Haze","Partly Cloudy and Breezy","A Few Clouds and Windy","Partly Cloudy and Windy"
+    ],
+    "mostlyCloudy": [
+        "Mostly Cloudy","Mostly Cloudy with Haze","Mostly Cloudy and Breezy","Mostly Cloudy and Windy"
+    ],
+    "cloudy": [
+        "Overcast","Overcast with Haze","Overcast and Breezy","Overcast and Windy","Dust","Low Drifting Dust",
+        "Blowing Dust","Sand","Blowing Sand","Low Drifting Sand","Dust/Sand Whirls","Dust/Sand Whirls in Vicinity",
+        "Dust Storm","Heavy Dust Storm","Dust Storm in Vicinity","Sand Storm","Heavy Sand Storm","Sand Storm in Vicinity",
+        "Smoke","Haze","Cold","Fog/Mist","Freezing Fog","Shallow Fog","Partial Fog","Patches of Fog","Fog in Vicinity",
+        "Freezing Fog in Vicinity","Shallow Fog in Vicinity","Partial Fog in Vicinity","Patches of Fog in Vicinity",
+        "Showers in Vicinity Fog","Light Freezing Fog","Heavy Freezing Fog"
+    ],
+    "lightRain": [
+        "Light Rain Ice Pellets","Drizzle Ice Pellets","Light Drizzle Ice Pellets","Light Ice Pellets Rain",
+        "Ice Pellets Drizzle","Light Ice Pellets Drizzle","Freezing Drizzle","Light Freezing Rain",
+        "Light Freezing Drizzle","Freezing Rain in Vicinity","Freezing Drizzle in Vicinity","Light Freezing Rain Rain",
+        "Light Rain Freezing Rain","Freezing Drizzle Rain","Light Freezing Drizzle Rain","Rain Freezing Drizzle",
+        "Light Rain Freezing Drizzle","Light Ice Pellets","Ice Crystals","Light Rain","Drizzle","Light Drizzle",
+        "Heavy Drizzle","Light Rain Fog/Mist","Drizzle Fog/Mist","Light Drizzle Fog/Mist","Heavy Drizzle Fog/Mist",
+        "Light Rain Fog","Drizzle Fog","Light Drizzle Fog","Light Rain Showers","Light Rain and Breezy",
+        "Light Showers Rain","Showers Rain in Vicinity","Light Rain Showers Fog/Mist","Rain Showers in Vicinity Fog/Mist",
+        "Light Showers Rain Fog/Mist","Showers Rain in Vicinity Fog/Mist","Showers in Vicinity","Showers in Vicinity Fog/Mist",
+        "Showers in Vicinity Fog","Showers in Vicinity Haze"
+    ],
+    "rain": [
+        "Rain Ice Pellets","Heavy Rain Ice Pellets","Heavy Drizzle Ice Pellets","Ice Pellets Rain",
+        "Heavy Ice Pellets Rain","Heavy Ice Pellets Drizzle","Freezing Rain","Heavy Freezing Rain",
+        "Heavy Freezing Drizzle","Freezing Rain Rain","Heavy Freezing Rain Rain","Rain Freezing Rain",
+        "Heavy Rain Freezing Rain","Heavy Freezing Drizzle Rain","Heavy Rain Freezing Drizzle","Ice Pellets",
+        "Heavy Ice Pellets","Ice Pellets in Vicinity","Showers Ice Pellets","Hail","Hail Showers","Heavy Drizzle Fog",
+        "Rain","Heavy Rain","Rain Fog/Mist","Heavy Rain Fog/Mist","Rain Fog","Heavy Rain Fog","Rain Showers",
+        "Heavy Rain Showers","Rain Showers in Vicinity","Heavy Showers Rain","Showers Rain","Rain Showers Fog/Mist",
+        "Heavy Rain Showers Fog/Mist","Heavy Showers Rain Fog/Mist","Showers Rain Fog/Mist"
+    ],
+    "thunderstorm": [
+        "Thunderstorm Ice Pellets","Thunderstorm","Thunderstorm Rain","Light Thunderstorm Rain","Heavy Thunderstorm Rain",
+        "Thunderstorm Rain Fog/Mist","Light Thunderstorm Rain Fog/Mist","Heavy Thunderstorm Rain Fog and Windy",
+        "Heavy Thunderstorm Rain Fog/Mist","Thunderstorm Showers in Vicinity","Light Thunderstorm Rain Haze",
+        "Heavy Thunderstorm Rain Haze","Thunderstorm Fog","Light Thunderstorm Rain Fog","Heavy Thunderstorm Rain Fog",
+        "Thunderstorm Light Rain","Thunderstorm Heavy Rain","Thunderstorm Rain Fog/Mist","Thunderstorm Light Rain Fog/Mist",
+        "Thunderstorm Heavy Rain Fog/Mist","Thunderstorm in Vicinity Fog/Mist","Thunderstorm Showers in Vicinity",
+        "Thunderstorm in Vicinity Haze","Thunderstorm Haze in Vicinity","Thunderstorm Light Rain Haze",
+        "Thunderstorm Heavy Rain Haze","Thunderstorm Fog","Thunderstorm Light Rain Fog","Thunderstorm Heavy Rain Fog",
+        "Thunderstorm Hail","Light Thunderstorm Rain Hail","Heavy Thunderstorm Rain Hail","Thunderstorm Rain Hail Fog/Mist",
+        "Light Thunderstorm Rain Hail Fog/Mist","Heavy Thunderstorm Rain Hail Fog/Hail","Thunderstorm Showers in Vicinity Hail",
+        "Light Thunderstorm Rain Hail Haze","Heavy Thunderstorm Rain Hail Haze","Thunderstorm Hail Fog",
+        "Light Thunderstorm Rain Hail Fog","Heavy Thunderstorm Rain Hail Fog","Thunderstorm Light Rain Hail",
+        "Thunderstorm Heavy Rain Hail","Thunderstorm Rain Hail Fog/Mist","Thunderstorm Light Rain Hail Fog/Mist",
+        "Thunderstorm Heavy Rain Hail Fog/Mist","Thunderstorm in Vicinity Hail","Thunderstorm in Vicinity Hail Haze",
+        "Thunderstorm Haze in Vicinity Hail","Thunderstorm Light Rain Hail Haze","Thunderstorm Heavy Rain Hail Haze",
+        "Thunderstorm Hail Fog","Thunderstorm Light Rain Hail Fog","Thunderstorm Heavy Rain Hail Fog",
+        "Thunderstorm Small Hail/Snow Pellets","Thunderstorm Rain Small Hail/Snow Pellets",
+        "Light Thunderstorm Rain Small Hail/Snow Pellets","Heavy Thunderstorm Rain Small Hail/Snow Pellets",
+        "Thunderstorm in Vicinity","Thunderstorm in Vicinity Fog","Thunderstorm in Vicinity Haze","Funnel Cloud",
+        "Funnel Cloud in Vicinity","Tornado/Water Spout","Tornado","Hurricane Warning","Hurricane Watch","Tropical Storm Warning",
+        "Tropical Storm Watch","Tropical Storm Conditions presently exist w/Hurricane Warning in effect"
+    ],
+    "lightSnow": [
+        "Light Snow","Light Snow Showers","Light Showers Snow","Light Snow Fog/Mist","Light Snow Showers Fog/Mist",
+        "Light Showers Snow Fog/Mist","Light Snow Fog","Light Snow Showers Fog","Blowing Snow","Snow Low Drifting Snow",
+        "Snow Blowing Snow","Light Snow Low Drifting Snow","Light Snow Blowing Snow","Light Snow Blowing Snow Fog/Mist",
+        "Light Thunderstorm Snow","Snow Grains","Light Snow Grains","Heavy Blowing Snow","Blowing Snow in Vicinity",
+        "Light Rain Snow","Light Snow Rain","Drizzle Snow","Light Drizzle Snow","Snow Drizzle","Light Snow Drizzle",
+        "Light Freezing Rain Snow","Light Freezing Drizzle Snow","Light Snow Freezing Rain","Light Snow Freezing Drizzle",
+        "Small Hail/Snow Pellets","Light Small Hail/Snow Pellets"
+    ],
+    "snow": [
+        "Snow","Heavy Snow","Snow Showers","Heavy Snow Showers","Showers Snow","Heavy Showers Snow",
+        "Snow Fog/Mist","Heavy Snow Fog/Mist","Snow Showers Fog/Mist","Heavy Snow Showers Fog/Mist",
+        "Showers Snow Fog/Mist","Heavy Showers Snow Fog/Mist","Snow Fog","Heavy Snow Fog","Snow Showers Fog",
+        "Heavy Snow Showers Fog","Showers in Vicinity Snow","Snow Showers in Vicinity","Snow Showers in Vicinity Fog/Mist",
+        "Snow Showers in Vicinity Fog","Low Drifting Snow","Heavy Snow Low Drifting Snow","Heavy Snow Blowing Snow",
+        "Thunderstorm Snow","Heavy Thunderstorm Snow","Heavy Snow Grains","Rain Snow","Heavy Rain Snow","Snow Rain",
+        "Heavy Snow Rain","Heavy Drizzle Snow","Heavy Drizzle Snow","Freezing Rain Snow","Heavy Freezing Rain Snow",
+        "Freezing Drizzle Snow","Heavy Freezing Drizzle Snow","Snow Freezing Rain","Heavy Snow Freezing Rain",
+        "Snow Freezing Drizzle","Heavy Snow Freezing Drizzle","Heavy small Hail/Snow Pellets","Snow Ice Pellets",
+        "Blizzard"
+    ]
+}
+
+var weatherStation = null;
+var currentWeatherCondition = null;
+var currentTemp = null;
+
+function getWeather(latitude, longitude) {
     var url = 'http://forecast.weather.gov/MapClick.php?lat=' + latitude + '&lon=' + longitude + '&FcstType=json';
     console.log(url);
     $.ajax({
-        type: "POST",
+        type: "GET",
         dataType: "jsonp",
         url: url,
         success: function (data) {
-            console.log(data);
+            weatherStation = data.currentobservation.name;
+            currentWeatherCondition = data.currentobservation.Weather;
+            currentTemp = data.currentobservation.Temp;
+            
+            for (var key in weatherConditions) {
+                if (weatherConditions.hasOwnProperty(key)) {
+                    //console.log(key + " -> " + weatherConditions[key]);
+                    
+                    if (weatherConditions[key].indexOf(currentWeatherCondition) > -1) {
+                        currentWeatherCondition = key;
+                        break;
+                    }
+                }
+            }
+            console.log(weatherStation);
+            console.log(currentWeatherCondition);
+            console.log(currentTemp);
         },
         error: function (errorData) {
             console.log(errorData);
@@ -140,108 +248,24 @@ function getWeatherLatLong(latitude, longitude) {
     });
 }
 
-var clearSkiesLabels = [
-    "Fair","Clear","Fair with Haze","Clear with Haze","Fair and Breezy","Clear and Breezy","Windy","Breezy",
-    "Fair and Windy","Hot"
-];
-var partlyCloudyLabels = [
-    "A Few Clouds","A Few Clouds with Haze","A Few Clouds and Breezy","Partly Cloudy",
-    "Partly Cloudy with Haze","Partly Cloudy and Breezy","A Few Clouds and Windy","Partly Cloudy and Windy"
-];
-var mostlyCloudyLabels = [
-    "Mostly Cloudy","Mostly Cloudy with Haze","Mostly Cloudy and Breezy","Mostly Cloudy and Windy"
-];
-var cloudyLabels = [
-    "Overcast","Overcast with Haze","Overcast and Breezy","Overcast and Windy","Dust","Low Drifting Dust",
-    "Blowing Dust","Sand","Blowing Sand","Low Drifting Sand","Dust/Sand Whirls","Dust/Sand Whirls in Vicinity",
-    "Dust Storm","Heavy Dust Storm","Dust Storm in Vicinity","Sand Storm","Heavy Sand Storm","Sand Storm in Vicinity",
-    "Smoke","Haze","Cold","Fog/Mist","Freezing Fog","Shallow Fog","Partial Fog","Patches of Fog","Fog in Vicinity",
-    "Freezing Fog in Vicinity","Shallow Fog in Vicinity","Partial Fog in Vicinity","Patches of Fog in Vicinity",
-    "Showers in Vicinity Fog","Light Freezing Fog","Heavy Freezing Fog"
-];
-var lightRainLabels = [
-    "Light Rain Ice Pellets","Drizzle Ice Pellets","Light Drizzle Ice Pellets","Light Ice Pellets Rain",
-    "Ice Pellets Drizzle","Light Ice Pellets Drizzle","Freezing Drizzle","Light Freezing Rain",
-    "Light Freezing Drizzle","Freezing Rain in Vicinity","Freezing Drizzle in Vicinity","Light Freezing Rain Rain",
-    "Light Rain Freezing Rain","Freezing Drizzle Rain","Light Freezing Drizzle Rain","Rain Freezing Drizzle",
-    "Light Rain Freezing Drizzle","Light Ice Pellets","Ice Crystals","Light Rain","Drizzle","Light Drizzle",
-    "Heavy Drizzle","Light Rain Fog/Mist","Drizzle Fog/Mist","Light Drizzle Fog/Mist","Heavy Drizzle Fog/Mist",
-    "Light Rain Fog","Drizzle Fog","Light Drizzle Fog","Light Rain Showers","Light Rain and Breezy",
-    "Light Showers Rain","Showers Rain in Vicinity","Light Rain Showers Fog/Mist","Rain Showers in Vicinity Fog/Mist",
-    "Light Showers Rain Fog/Mist","Showers Rain in Vicinity Fog/Mist","Showers in Vicinity","Showers in Vicinity Fog/Mist",
-    "Showers in Vicinity Fog","Showers in Vicinity Haze"
-];
-var rainLabels = [
-    "Rain Ice Pellets","Heavy Rain Ice Pellets","Heavy Drizzle Ice Pellets","Ice Pellets Rain",
-    "Heavy Ice Pellets Rain","Heavy Ice Pellets Drizzle","Freezing Rain","Heavy Freezing Rain",
-    "Heavy Freezing Drizzle","Freezing Rain Rain","Heavy Freezing Rain Rain","Rain Freezing Rain",
-    "Heavy Rain Freezing Rain","Heavy Freezing Drizzle Rain","Heavy Rain Freezing Drizzle","Ice Pellets",
-    "Heavy Ice Pellets","Ice Pellets in Vicinity","Showers Ice Pellets","Hail","Hail Showers","Heavy Drizzle Fog",
-    "Rain","Heavy Rain","Rain Fog/Mist","Heavy Rain Fog/Mist","Rain Fog","Heavy Rain Fog","Rain Showers",
-    "Heavy Rain Showers","Rain Showers in Vicinity","Heavy Showers Rain","Showers Rain","Rain Showers Fog/Mist",
-    "Heavy Rain Showers Fog/Mist","Heavy Showers Rain Fog/Mist","Showers Rain Fog/Mist"
-];
-var thunderstormLabels = [
-    "Thunderstorm Ice Pellets","Thunderstorm","Thunderstorm Rain","Light Thunderstorm Rain","Heavy Thunderstorm Rain",
-    "Thunderstorm Rain Fog/Mist","Light Thunderstorm Rain Fog/Mist","Heavy Thunderstorm Rain Fog and Windy",
-    "Heavy Thunderstorm Rain Fog/Mist","Thunderstorm Showers in Vicinity","Light Thunderstorm Rain Haze",
-    "Heavy Thunderstorm Rain Haze","Thunderstorm Fog","Light Thunderstorm Rain Fog","Heavy Thunderstorm Rain Fog",
-    "Thunderstorm Light Rain","Thunderstorm Heavy Rain","Thunderstorm Rain Fog/Mist","Thunderstorm Light Rain Fog/Mist",
-    "Thunderstorm Heavy Rain Fog/Mist","Thunderstorm in Vicinity Fog/Mist","Thunderstorm Showers in Vicinity",
-    "Thunderstorm in Vicinity Haze","Thunderstorm Haze in Vicinity","Thunderstorm Light Rain Haze",
-    "Thunderstorm Heavy Rain Haze","Thunderstorm Fog","Thunderstorm Light Rain Fog","Thunderstorm Heavy Rain Fog",
-    "Thunderstorm Hail","Light Thunderstorm Rain Hail","Heavy Thunderstorm Rain Hail","Thunderstorm Rain Hail Fog/Mist",
-    "Light Thunderstorm Rain Hail Fog/Mist","Heavy Thunderstorm Rain Hail Fog/Hail","Thunderstorm Showers in Vicinity Hail",
-    "Light Thunderstorm Rain Hail Haze","Heavy Thunderstorm Rain Hail Haze","Thunderstorm Hail Fog",
-    "Light Thunderstorm Rain Hail Fog","Heavy Thunderstorm Rain Hail Fog","Thunderstorm Light Rain Hail",
-    "Thunderstorm Heavy Rain Hail","Thunderstorm Rain Hail Fog/Mist","Thunderstorm Light Rain Hail Fog/Mist",
-    "Thunderstorm Heavy Rain Hail Fog/Mist","Thunderstorm in Vicinity Hail","Thunderstorm in Vicinity Hail Haze",
-    "Thunderstorm Haze in Vicinity Hail","Thunderstorm Light Rain Hail Haze","Thunderstorm Heavy Rain Hail Haze",
-    "Thunderstorm Hail Fog","Thunderstorm Light Rain Hail Fog","Thunderstorm Heavy Rain Hail Fog",
-    "Thunderstorm Small Hail/Snow Pellets","Thunderstorm Rain Small Hail/Snow Pellets",
-    "Light Thunderstorm Rain Small Hail/Snow Pellets","Heavy Thunderstorm Rain Small Hail/Snow Pellets",
-    "Thunderstorm in Vicinity","Thunderstorm in Vicinity Fog","Thunderstorm in Vicinity Haze","Funnel Cloud",
-    "Funnel Cloud in Vicinity","Tornado/Water Spout","Tornado","Hurricane Warning","Hurricane Watch","Tropical Storm Warning",
-    "Tropical Storm Watch","Tropical Storm Conditions presently exist w/Hurricane Warning in effect"
-];
-var lightSnowLabels = [
-    "Light Snow","Light Snow Showers","Light Showers Snow","Light Snow Fog/Mist","Light Snow Showers Fog/Mist",
-    "Light Showers Snow Fog/Mist","Light Snow Fog","Light Snow Showers Fog","Blowing Snow","Snow Low Drifting Snow",
-    "Snow Blowing Snow","Light Snow Low Drifting Snow","Light Snow Blowing Snow","Light Snow Blowing Snow Fog/Mist",
-    "Light Thunderstorm Snow","Snow Grains","Light Snow Grains","Heavy Blowing Snow","Blowing Snow in Vicinity",
-    "Light Rain Snow","Light Snow Rain","Drizzle Snow","Light Drizzle Snow","Snow Drizzle","Light Snow Drizzle",
-    "Light Freezing Rain Snow","Light Freezing Drizzle Snow","Light Snow Freezing Rain","Light Snow Freezing Drizzle",
-    "Small Hail/Snow Pellets","Light Small Hail/Snow Pellets"
-];
-var snowLabels = [
-    "Snow","Heavy Snow","Snow Showers","Heavy Snow Showers","Showers Snow","Heavy Showers Snow",
-    "Snow Fog/Mist","Heavy Snow Fog/Mist","Snow Showers Fog/Mist","Heavy Snow Showers Fog/Mist",
-    "Showers Snow Fog/Mist","Heavy Showers Snow Fog/Mist","Snow Fog","Heavy Snow Fog","Snow Showers Fog",
-    "Heavy Snow Showers Fog","Showers in Vicinity Snow","Snow Showers in Vicinity","Snow Showers in Vicinity Fog/Mist",
-    "Snow Showers in Vicinity Fog","Low Drifting Snow","Heavy Snow Low Drifting Snow","Heavy Snow Blowing Snow",
-    "Thunderstorm Snow","Heavy Thunderstorm Snow","Heavy Snow Grains","Rain Snow","Heavy Rain Snow","Snow Rain",
-    "Heavy Snow Rain","Heavy Drizzle Snow","Heavy Drizzle Snow","Freezing Rain Snow","Heavy Freezing Rain Snow",
-    "Freezing Drizzle Snow","Heavy Freezing Drizzle Snow","Snow Freezing Rain","Heavy Snow Freezing Rain",
-    "Snow Freezing Drizzle","Heavy Snow Freezing Drizzle","Heavy small Hail/Snow Pellets","Snow Ice Pellets",
-    "Blizzard"
-];
-
-/*function getWeatherPostal(postal) {
-    var url = 'https://api.openweathermap.org/data/2.5/weather?zip=' + postal + '&APPID=dfb5b545089ddd41294f1b68078d0dec';
+function getLatLong(postal) {
+    var url = 'http://api.zippopotam.us/us/' + postal;
     $.ajax({
-        type: "POST",
-        dataType: "jsonp",
+        type: "GET",
+        dataType: "json",
         url: url,
         success: function (data) {
+            console.log(data);
+            getWeather(data.places[0].latitude,data.places[0].longitude);
         },
         error: function (errorData) {
         }
     });
-}*/
+}
 
-if ("geolocation" in navigator) {
+if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function(position) {
-        getWeatherLatLong(position.coords.latitude,position.coords.longitude);
+        getWeather(position.coords.latitude,position.coords.longitude);
     }, function(error) {
         $('.postal-input').addClass('show');
     });
@@ -251,9 +275,9 @@ else {
     $('.postal-input').addClass('show');
 }
 
-/*$('.postal-input button').on('click',function() {
-    getWeatherPostal($('.postal-input input').val());
-});*/
+$('.postal-input button').on('click',function() {
+    getLatLong($('.postal-input input').val());
+});
 
 
 
