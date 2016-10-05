@@ -171,6 +171,13 @@ body {
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     z-index: 2;
+    -webkit-transition: opacity 10s linear;
+    transition: opacity 10s linear;
+    opacity: 0.95;
+}
+
+.night .clouds-container {
+    opacity: 0.7;
 }
 
 .clouds {
@@ -180,12 +187,12 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("../images/clouds.png") repeat-x;
+    background: url("../images/clouds/cloudy.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
-    -webkit-animation: cloud-scroll 120s 0.1s linear infinite;
+    -webkit-animation: cloud-scroll 30s 0.1s linear infinite;
     -webkit-animation-fill-mode: both;
-    animation: cloud-scroll 120s 0.1s linear infinite;
+    animation: cloud-scroll 30s 0.1s linear infinite;
 	-webkit-transform: translateY(-740px);
     transform: translateY(-740px);
 }
@@ -196,12 +203,12 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("../images/clouds.png") repeat-x;
+    background: url("../images/clouds/cloudy.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
-    -webkit-animation: cloud-scroll2 120s 0.1s linear infinite;
+    -webkit-animation: cloud-scroll2 30s 0.1s linear infinite;
     -webkit-animation-fill-mode: both;
-    animation: cloud-scroll2 120s 0.1s linear infinite;
+    animation: cloud-scroll2 30s 0.1s linear infinite;
     -webkit-transform: translateY(0px);
     transform: translateY(0px);
 }
@@ -212,12 +219,12 @@ body {
     top: 0;
     width: 200%;
     height: 800px;
-    background: url("../images/clouds.png") repeat-x;
+    background: url("../images/clouds/cloudy.png") repeat-x;
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%; 
-    -webkit-animation: cloud-scroll3 120s 0.1s linear infinite;
+    -webkit-animation: cloud-scroll3 30s 0.1s linear infinite;
     -webkit-animation-fill-mode: both;
-    animation: cloud-scroll3 120s 0.1s linear infinite;
+    animation: cloud-scroll3 30s 0.1s linear infinite;
     -webkit-transform: translateY(740px);
     transform: translateY(740px);
 }
@@ -574,8 +581,8 @@ body {
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    -webkit-transform: scale(0.95) translateX(-1px);
-    transform: scale(0.95) translateX(-1px);
+    -webkit-transform: scale(0.95) translateX(-2px);
+    transform: scale(0.95) translateX(-2px);
 }
 
 .fruit.peach {
