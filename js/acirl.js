@@ -217,7 +217,7 @@ var currentWeatherCondition = null;
 var currentTemp = null;
 
 function getWeather(latitude, longitude) {
-    var url = 'http://forecast.weather.gov/MapClick.php?lat=' + latitude + '&lon=' + longitude + '&FcstType=json';
+    var url = 'https://forecast.weather.gov/MapClick.php?lat=' + latitude + '&lon=' + longitude + '&FcstType=json';
     console.log(url);
     $.ajax({
         type: "GET",
@@ -249,7 +249,7 @@ function getWeather(latitude, longitude) {
 }
 
 function getLatLong(postal) {
-    var url = 'http://api.zippopotam.us/us/' + postal;
+    var url = 'https://api.zippopotam.us/us/' + postal;
     $.ajax({
         type: "GET",
         dataType: "json",
